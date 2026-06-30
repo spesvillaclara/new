@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FlavorBridge - Envía Sabor a Casa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#f9f9ff",
+                    "surface-tint": "#b02f00",
+                    "outline": "#907067",
+                    "on-background": "#151c27",
+                    "surface-dim": "#d3daea",
+                    "on-secondary-fixed-variant": "#6f3800",
+                    "tertiary": "#3f6653",
+                    "tertiary-container": "#719a85",
+                    "background": "#f9f9ff",
+                    "on-primary-container": "#541200",
+                    "secondary-fixed": "#ffdcc4",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-high": "#e2e8f8",
+                    "primary-fixed-dim": "#ffb5a0",
+                    "inverse-primary": "#ffb5a0",
+                    "error-container": "#ffdad6",
+                    "on-surface": "#151c27",
+                    "on-primary-fixed": "#3b0900",
+                    "on-primary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#053121",
+                    "on-surface-variant": "#5b4039",
+                    "surface": "#f9f9ff",
+                    "surface-variant": "#dce2f3",
+                    "on-error": "#ffffff",
+                    "secondary-container": "#ffab69",
+                    "primary-container": "#ff5722",
+                    "surface-container-low": "#f0f3ff",
+                    "inverse-on-surface": "#ebf1ff",
+                    "primary-fixed": "#ffdbd1",
+                    "surface-container-highest": "#dce2f3",
+                    "on-primary-fixed-variant": "#862200",
+                    "on-secondary-container": "#783d01",
+                    "on-tertiary-fixed": "#002114",
+                    "secondary": "#8e4e14",
+                    "primary": "#b02f00",
+                    "tertiary-fixed": "#c1ecd4",
+                    "outline-variant": "#e4beb4",
+                    "on-secondary-fixed": "#2f1400",
+                    "secondary-fixed-dim": "#ffb780",
+                    "surface-container": "#e7eefe",
+                    "inverse-surface": "#2a313d",
+                    "tertiary-fixed-dim": "#a5d0b9",
+                    "on-tertiary-fixed-variant": "#274e3d",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "12px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "gutter": "16px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "container-margin": "20px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Montserrat"],
+                    "headline-xl": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav-dot::after {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background-color: currentColor;
+            border-radius: 50%;
+            margin-top: 2px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top AppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-margin h-16 bg-surface dark:bg-on-background shadow-sm">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim cursor-pointer hover:opacity-80 transition-opacity">menu</span>
+<h1 class="font-headline-md text-headline-md-mobile font-bold text-primary dark:text-primary-fixed-dim tracking-tight">FlavorBridge</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant dark:text-outline-variant hover:opacity-80 transition-opacity cursor-pointer">search</span>
+<div class="relative">
+<span class="material-symbols-outlined text-on-surface-variant dark:text-outline-variant hover:opacity-80 transition-opacity cursor-pointer">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">2</span>
+</div>
+</div>
+</header>
+<main class="pt-16 pb-24">
+<!-- Hero Section -->
+<section class="relative w-full h-[460px] md:h-[520px] overflow-hidden flex items-center">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="A cinematic, high-quality photograph of a vibrant family dinner table filled with various authentic home-cooked meals including stews, fresh bread, and colorful salads. The lighting is warm and golden, evoking a sunset atmosphere. The scene is shot with a shallow depth of field, highlighting the steam rising from the hot food. The overall mood is nostalgic, comforting, and appetizing, emphasizing connection and love across distances." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDzxoV3ZWxzlBvYzKQLU_SVQVG87B-CjKIoUZ6VhyyePxXwryFnQ6nxuD5wVFjZw-Y4viGEi0NdiMGo8GjwMg6674qp13M0AvP66KkpAquEECgnDTznHj_U6F6BbpuQu66S73v31mgfWUpUJQL8x8qe0Hqi3xMhyhbEMfzCFd4HkozQjlgUqvV_zHqBc_tll-3rbptZakenEuHs35XcJxbPIEWZvimDQY57SU-nNCAQHG_7zAvgX2GOmhVBLgArFxnChT4c_bg3LCc')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-on-background/80 via-on-background/40 to-transparent"></div>
+</div>
+<div class="relative z-10 px-container-margin max-w-2xl">
+<h2 class="font-headline-xl text-headline-lg-mobile text-white mb-4 leading-tight">Envía sabor a casa desde cualquier parte del mundo</h2>
+<p class="text-white/90 text-body-lg mb-8 max-w-lg">Acortamos distancias con combos de comida fresca y productos de calidad entregados directamente a tus seres queridos.</p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-white px-8 py-4 rounded-full font-bold text-label-md hover:scale-105 transition-transform shadow-lg active:scale-95">Ver Combos</button>
+<button class="bg-white/10 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-full font-bold text-label-md hover:bg-white/20 transition-colors">Saber más</button>
+</div>
+</div>
+</section>
+<!-- Combo Progress Tracker (Custom Component) -->
+<section class="px-container-margin -mt-8 relative z-20">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-lg border border-outline-variant/30 max-w-4xl mx-auto">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-md text-on-surface">Tu próximo envío gratis</span>
+<span class="font-label-sm text-primary">75% Completo</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-tertiary w-3/4 rounded-full"></div>
+</div>
+<p class="mt-2 text-label-sm text-on-surface-variant italic">¡Agrega $25 más para desbloquear envío express prioritario!</p>
+</div>
+</section>
+<!-- Categories -->
+<section class="mt-12 px-container-margin">
+<h3 class="font-headline-md text-headline-md-mobile mb-6 text-on-surface">Categorías</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Category Card 1 -->
+<div class="group relative aspect-[4/3] rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-shadow">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="Close-up of a large family-sized wooden bowl filled with steaming traditional rice and beans, roasted meat, and fried plantains. Warm, bright kitchen lighting illuminates the textures of the food. Professional food photography style, high contrast, warm sunset orange and terracotta tones dominate the palette." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuClnj2ZB_3yIel8AwIFUtl2hr3Jki-BZW4uAnYA-oUY8pRALw-Ough6p_cAOTAPn6zHseSmiG3_oyQW0yulkjU8aemo2Ewnn6H_04VDLN3icevR4eI1kmbkUQwRMsft1jtgmCznoGMp75YER9vU-EOXIj2UuCp1LRVrAKchiXafMp1L4pWsTkmipL_dLzw5kiiZ-yKxg7iBNIEG3F-oNoUUIDGdukJ8-NOEq8C5_GMYIf2XVKq_TT-VjbDmV2b-eqUoNQSMnQkBRGo')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<p class="text-white font-bold text-label-md">Combos Familiares</p>
+</div>
+</div>
+<!-- Category Card 2 -->
+<div class="group relative aspect-[4/3] rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-shadow">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="A beautifully arranged breakfast tray featuring freshly squeezed orange juice, artisan coffee with latte art, crispy croissants, and sliced tropical fruits. Bright morning sunlight streams through a window, creating long soft shadows. Modern aesthetic, clean white surfaces, vibrant natural colors." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCojcDXDB6PfNXJ9HNVcHUp4R43CnsrWzMdk_DcuL-0ybTxEDIV1sYJvPsZj3nFr5Si-HFB5zYCLU2wv6ih5N1YWinYJ8NQgDbVZ-ibnHy6lgnzVcupdCkfbV__j3br2e5sQ9x7IThFH5UuwJiEVH8Fhj68xMC8hTMoQ1XvV0jdfhK7Ju1JISXqp_BX90OKdHiWUjld1K4J7cP9VIM38Hi3P62LIo78UX50dFECPqv5ygFB7TDzzhgqyIOH2eMNPvyFFT7q3NoIbi4')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<p class="text-white font-bold text-label-md">Desayunos</p>
+</div>
+</div>
+<!-- Category Card 3 -->
+<div class="group relative aspect-[4/3] rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-shadow">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="A rustic wooden basket overflowing with essential groceries like fresh eggs, milk bottles, bags of flour, olive oil, and vibrant green vegetables. The lighting is soft and natural, emphasizing freshness and quality. Earthy tones and rich textures of organic packaging." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDt95zVmUy2s_RKKIa5yBi-HgxgGBSILEYBx5C0SFNhkZAXieiBKS9_MSP5SGh0bxbMQzB8XGCnQhs6smDH1h8dCPd1AAU2uD5JfJxWNSCUFAqqjE_6DYvl7XphRnS-SaMqsTT1Oe-VuNhSWysjeO4pqbGPlsZXLXPhriWDvZCE30jGAfdLelkp738V1nbudASYweNmdRAzfg0uhc2damYE7a8XJWuGdEQYRGCygzoaUNR1wl5bQHYAGMoL21PfgDam4ISUbd7hrZg')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<p class="text-white font-bold text-label-md">Víveres</p>
+</div>
+</div>
+<!-- Category Card 4 -->
+<div class="group relative aspect-[4/3] rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-shadow">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="An elegant gift hamper wrapped in clear cellophane with a large silk orange ribbon. Inside are gourmet chocolates, a bottle of premium wine, and a handwritten card. High-end lifestyle photography, soft focus background, celebratory and warm atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAEdBwzJFbDGs8kNFnRk7t1Y28uZr2ByzDPm5ax0aC9wbQsoGKzKRtZQddUP7zBnlarf2TFPWfCP9ikeR4uGm0g53tZqmXWxXA7e_J7qUzGUxu_huzvDsLuYjubXJAMax10bFuVKxnKBNmnNns0MseizYfX8ShreEUv-ptrFQpzgaUrv4RIQjTJYB2_GV0z4tZ5KZxqBnZoPHg2SwScgLCcjuk0Mm770lukpNF9HrGarrK0GOkTyfm6iRIuGrg5XQ4n9sJM07ImzuI')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<p class="text-white font-bold text-label-md">Regalos</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Section: Combos más populares -->
+<section class="mt-12">
+<div class="px-container-margin flex justify-between items-end mb-6">
+<div>
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface">Combos más populares</h3>
+<p class="text-on-surface-variant text-label-md">Los favoritos de nuestra comunidad</p>
+</div>
+<button class="text-primary font-bold text-label-md flex items-center gap-1 hover:gap-2 transition-all">
+                    Ver todos <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<div class="flex overflow-x-auto px-container-margin gap-6 no-scrollbar pb-4">
+<!-- Featured Card 1 -->
+<div class="min-w-[280px] w-[280px] bg-surface-container-lowest rounded-xl shadow-md overflow-hidden group">
+<div class="h-48 relative">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Close-up of a 'Grand Family Combo' featuring a roasted whole chicken, large serving of golden fries, fresh coleslaw, and a stack of warm tortillas. The food is perfectly lit to show moisture and heat. Warm, high-saturation color palette with a focus on oranges and reds." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDBz0st4TERG-lupMdNEjSmCvQI3CimMYIobDF7SAfttWQ6vfzc9H8cB2RPdiMzBVWKfMgmCYyus-jy8paw8K7xhSxTVIDUKNAOcOHl1v-8iJdhmAWFdzgzSLgafQgihWL9m_yIw9WyLxBY7li1Frln5D09gKwJIiG61B6Fsm1JwLB9GMYyk2QVWXDxMkl_oitFco6HPzvvh944LYyNHKu-R_P0Db7qsLi3Zj7llUo8GSMr26ewB3uSUtNtIRgmTbmb0KbNQVcaa2M')"></div>
+<div class="absolute top-3 left-3 bg-tertiary text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Más Vendido</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-on-surface text-body-md">Combo Familiar Supremo</h4>
+<span class="text-primary font-bold">$45.00</span>
+</div>
+<div class="flex gap-2 mb-4">
+<span class="bg-surface-container px-2 py-1 rounded text-[10px] text-on-surface-variant font-semibold">4-6 Personas</span>
+<span class="bg-surface-container px-2 py-1 rounded text-[10px] text-on-surface-variant font-semibold">Entrega 24h</span>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container py-3 rounded-lg font-bold text-label-md group-hover:bg-primary group-hover:text-white transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                            Añadir al Combo
+                        </button>
+</div>
+</div>
+<!-- Featured Card 2 -->
+<div class="min-w-[280px] w-[280px] bg-surface-container-lowest rounded-xl shadow-md overflow-hidden group">
+<div class="h-48 relative">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A 'Breakfast for Two' combo with scrambled eggs, crispy bacon, fresh avocado slices, sourdough toast, and two glass jars of cold-pressed orange juice. Top-down view, clean minimalist table, morning light with subtle lens flare." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDGypbxWPHRuhOTaM41ihmUHBG3L2T3PwAys9kcgRUDw0QCsW3KP5PjU9bgLpCWSsK_eEydmlsw8-J6BYXKcq3rqVfXjlGSK8trTW46HorSwU58ee66BWEEEXEGVnFEKhC2Wn9CLhwid1R7YTdcg4mIIz2Cjxz5fr1ylV9TOVCjoXJnE12CfdqtcpqG0MiFiDWi7fFKfsEtwwB-D0wnnrtefyB6_OV0lCbIaaosCz54SFJxC17GzBwb5diopaGfqXb0ruhhCY9AFZM')"></div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-on-surface text-body-md">Amanecer Especial</h4>
+<span class="text-primary font-bold">$28.50</span>
+</div>
+<div class="flex gap-2 mb-4">
+<span class="bg-surface-container px-2 py-1 rounded text-[10px] text-on-surface-variant font-semibold">2 Personas</span>
+<span class="bg-surface-container px-2 py-1 rounded text-[10px] text-on-surface-variant font-semibold">Gourmet</span>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container py-3 rounded-lg font-bold text-label-md group-hover:bg-primary group-hover:text-white transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                            Añadir al Combo
+                        </button>
+</div>
+</div>
+<!-- Featured Card 3 -->
+<div class="min-w-[280px] w-[280px] bg-surface-container-lowest rounded-xl shadow-md overflow-hidden group">
+<div class="h-48 relative">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A pantry staple combo consisting of 5kg of high-quality rice, 2 liters of vegetable oil, 2kg of black beans, and organic coffee beans. Items are neatly arranged on a neutral background. Sharp focus, professional product photography style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBMH5oG-UFYFAp_UfDH_a_XWbcfW_5JDX6UT90lx3bHBfeo-0Iis7749acER5qgyCjznZbL1_CqWXbrhSslNYNwH1K9tmAyt8lYHItiQPnkE6k4LCEuaNvFFJwhHw9bWkLn9HyzkSFQZuJDxCDOGN1uOxFvzDA883hE0OZKU2vS3xjsxra5VJDe4S05wHBdM6QZOZXXCWBRVWYLh6g2iLEbFj9YmWBN596vOn-5FED2sDmM36k2F0e2kInurOFrVHlUj5Kn0q-HGtw')"></div>
+<div class="absolute top-3 left-3 bg-secondary text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Ahorro</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-on-surface text-body-md">Kit Despensa Básica</h4>
+<span class="text-primary font-bold">$32.00</span>
+</div>
+<div class="flex gap-2 mb-4">
+<span class="bg-surface-container px-2 py-1 rounded text-[10px] text-on-surface-variant font-semibold">Esenciales</span>
+<span class="bg-surface-container px-2 py-1 rounded text-[10px] text-on-surface-variant font-semibold">Larga Vida</span>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container py-3 rounded-lg font-bold text-label-md group-hover:bg-primary group-hover:text-white transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                            Añadir al Combo
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- 'How it works' Banner -->
+<section class="mt-16 px-container-margin">
+<div class="bg-on-background text-white rounded-2xl p-8 md:p-12 relative overflow-hidden">
+<!-- Abstract BG element -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[80px] -mr-32 -mt-32"></div>
+<h3 class="font-headline-md text-headline-lg-mobile mb-10 text-center">¿Cómo funciona?</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary-container/30 flex items-center justify-center mb-6 border border-primary/40">
+<span class="material-symbols-outlined text-primary-fixed-dim text-3xl">restaurant_menu</span>
+</div>
+<h4 class="font-bold text-headline-md mb-2">1. Elige</h4>
+<p class="text-white/70 text-label-md">Selecciona los combos o productos individuales que deseas enviar.</p>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary-container/30 flex items-center justify-center mb-6 border border-primary/40">
+<span class="material-symbols-outlined text-primary-fixed-dim text-3xl">payments</span>
+</div>
+<h4 class="font-bold text-headline-md mb-2">2. Paga</h4>
+<p class="text-white/70 text-label-md">Paga de forma segura desde cualquier país con tarjeta o PayPal.</p>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary-container/30 flex items-center justify-center mb-6 border border-primary/40">
+<span class="material-symbols-outlined text-primary-fixed-dim text-3xl">local_shipping</span>
+</div>
+<h4 class="font-bold text-headline-md mb-2">3. Entregamos</h4>
+<p class="text-white/70 text-label-md">Tus seres queridos reciben sabor y amor en la puerta de su casa.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / Trust CTA -->
+<section class="mt-16 px-container-margin pb-12">
+<div class="flex flex-col md:flex-row items-center gap-8 bg-surface-container-low p-8 rounded-2xl border border-outline-variant/20">
+<div class="flex-1">
+<h4 class="font-headline-md text-on-surface mb-2">No te pierdas de nuestras ofertas</h4>
+<p class="text-on-surface-variant text-label-md mb-6">Suscríbete para recibir cupones exclusivos y noticias de nuevos combos.</p>
+<div class="flex gap-2">
+<input class="flex-1 px-4 py-3 rounded-lg border-outline-variant focus:border-primary focus:ring-primary bg-white" placeholder="Tu correo electrónico" type="email"/>
+<button class="bg-primary text-white px-6 py-3 rounded-lg font-bold text-label-md whitespace-nowrap">Unirme</button>
+</div>
+</div>
+<div class="w-32 h-32 md:w-48 md:h-48 flex-shrink-0 bg-contain bg-no-repeat bg-center" data-alt="A stylized 3D illustration of a friendly food delivery mascot holding a heart-shaped pizza box. The character is cute and approachable with vibrant colors that match the sunset orange and terracotta brand palette. Soft lighting and smooth textures." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBFC2rvkjOSKImgXfG1DfGAbZkbdjlRqqQf26hUe_JP11CuwQmmXzn_lA7DgmJo0rchaB-6TOj8BW3vT7X-32hSr9l5YDYfJc_cWsvYEoAr_QzA6KX0peU-gbXsUuuJ54rbaiBzpE5EqISbY2czBszhPcc0omeBCmNN7TUvj2N6jug2i1G9yQ75lMFdZPk0RaNnkD6q7QOy_5lIjuM_CKNma-wpXCyIYodyK29o-LNiz0VEFn77V8WgxAqcPIa4i_Z2--Sg21YJt2M')"></div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface dark:bg-on-background shadow-lg rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold active-nav-dot hover:bg-surface-container-low dark:hover:bg-surface-variant rounded-full transition-colors p-2" href="#">
+<span class="material-symbols-outlined" data-weight="fill">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-variant rounded-full transition-colors p-2" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-variant rounded-full transition-colors p-2" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-variant rounded-full transition-colors p-2" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<!-- Floating Action Button (FAB) - Contextual for Home -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-[0px_8px_24px_rgba(176,47,0,0.3)] hover:scale-110 active:scale-95 transition-transform z-40">
+<span class="material-symbols-outlined text-3xl">chat</span>
+</button>
+<script>
+        // Simple micro-interaction for active state scaling
+        document.querySelectorAll('nav a, button').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.classList.add('scale-95');
+            });
+            el.addEventListener('mouseup', () => {
+                el.classList.remove('scale-95');
+            });
+            el.addEventListener('mouseleave', () => {
+                el.classList.remove('scale-95');
+            });
+        });
+
+        // Horizontal scroll animation hint
+        const scrollContainer = document.querySelector('.no-scrollbar');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        scrollContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - scrollContainer.offsetLeft;
+            scrollLeft = scrollContainer.scrollLeft;
+        });
+        scrollContainer.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+        scrollContainer.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+        scrollContainer.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - scrollContainer.offsetLeft;
+            const walk = (x - startX) * 2;
+            scrollContainer.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body></html>
